@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv(r"E:/Machine learning/archive/WA_Fn-UseC_-Telco-Customer-Churn.csv")
+df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
+df.dropna(inplace=True)
+sns.countplot(x="Churn",data=df)
+plt.title("Customer Churn Distribution")
+plt.show()
+sns.countplot(x="gender",hue="Churn",data=df)
+plt.title("gender vs churn")
+plt.show()
+sns.countplot(x="Contract",hue="Churn",data=df)
+plt.title("Contract type vs Churn")
+plt.show()
+sns.boxplot(x="Churn",y="MonthlyCharges",data=df)
+plt.title("Montlycharges vs churn")
+plt.show()
+sns.boxplot(x="Churn",y="tenure",data=df)
+plt.title("tenure vs Churn")
+plt.show()

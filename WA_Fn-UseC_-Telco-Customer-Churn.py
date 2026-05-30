@@ -1,0 +1,25 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv(r"E:/Machine learning/archive/WA_Fn-UseC_-Telco-Customer-Churn.csv")
+
+df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
+df.dropna(inplace=True)
+print(df.head())
+print(df.head())
+print(df.info())
+print(df.isnull().sum())
+print("\nShape of the Dataset")
+print(df.shape)
+print("\nColoums Names")
+print(df.columns)
+print("\nUnique Values in Churn")
+print(df["Churn"].unique())
+print("\nChurn Value Counts;")
+print(df["Churn"].value_counts())
+print("\nDatatypes")
+print(df.dtypes )
+print(df["TotalCharges"].isnull().sum())
+sns.countplot(x="Churn",data=df)
+plt.title("Custoemr Churn Distribution")
+plt.show()
